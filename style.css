@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'Cone of silence';
+    src: url('fonts/Cone_of_silence.ttf');
+}
+
+@font-face {
+    font-family: 'Anir';
+    src: url('fonts/anirb___.ttf');
+    src: url('fonts/anirm___.ttf');  
+}
+
+:root {
+    --main-color: #8e3d00;
+    --main-color_rgb: 142, 61, 0;
+    --color-valid: rgb(5, 21, 168);
+    --color-invalid: red;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,26 +23,29 @@
 
 body {
     min-height: 100vh;
-    width: 100%;
-    --main-color: #8e3d00;
+    width: 100vw;
+    font-family: 'Cone of silence', 'Anir', sans-serif;
+    box-sizing: border-box;
 }
 
 main {
     display: flex;
+    background-color: rgba(var(--main-color_rgb), 0.1);
 }
 
 .sidebar {
     background: url("background.avif") center no-repeat;
     background-size: cover;
     min-height: 100vh;
-    width: 35%;
+    width: 30vw;
+    min-width: 360px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .header {
-    margin-top: 40%;
+    margin-top: 22vh;
     background: var(--main-color);
     opacity: .4;
     height: 130px;
@@ -43,4 +64,119 @@ footer {
     color: var(--main-color);
     text-align: center;
     margin: 5px;
+}
+
+a {
+    color: var(--main-color);
+}
+
+.info {
+    margin: auto 0 auto 0;
+    font-size: 18px;
+    width: 70vw;
+}
+
+.text, 
+.form,
+.account {
+    padding-left: 3vw;
+}
+
+.form {
+    margin: 30px 0px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    /*width: 100%;*/
+    background-color: white;
+}
+
+form {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.form-row label {
+    font-size: 12px;
+    width: auto;
+    height: 20px;
+    margin: 0 0 3px 0;
+}
+
+.form-row input {
+    font-size: 14px;
+    width: 300px;
+    font-family: 'Anir', sans-serif;
+    border: 1px solid #D6D9DC;
+    border-radius: 6px;
+    padding: 7px;
+}
+/*
+.form-row input:invalid {
+    border-color: var(--color-invalid);
+}*/
+
+.form-row input:focus:valid  {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-color: var(--color-valid);
+}
+
+.form-row input:focus:invalid  {
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-color: var(--color-invalid);
+}
+
+/* Only show invalid ring while not focused */
+input:not(:focus):not(:placeholder-shown):invalid {
+    border-color: var(--color-invalid);
+}
+input:not(:focus):not(:placeholder-shown):invalid ~ .error-message {
+    display: block; 
+}
+  
+  /* Only show valid ring while not focused and if a value is entered */
+  /* :empty won't work here as that targets elements that have no childeren. Therefore we abuse :placeholder-shown */
+input:not(:focus):not(:placeholder-shown):valid {
+    border-color: var(--color-valid);
+}
+
+input:focus {
+    outline: none;
+}
+
+.form-row {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.wrapper {
+    display: flex;
+    gap: 70px;
+}
+
+.account {
+    display: flex;
+    flex-direction: column;    
+}
+
+.createacc {
+    color: white;
+    background-color: var(--main-color);
+    border-radius: 10px;
+    border: none;
+    padding: 8px 36px;
+    width: fit-content;
+    font-family: 'Cone of silence', 'Anir', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+
+@media (width <= 1150px) {
+    
 }
