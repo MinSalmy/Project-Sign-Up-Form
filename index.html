@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <main>
@@ -41,11 +41,11 @@
                     <div class="wrapper">
                         <div class="form-row">
                             <label for="firstname">FIRST NAME</label>
-                            <input type="text" name="firstname" id="firstname" placeholder="First name*" required>
+                            <input type="text" name="firstname" id="firstname" pattern="[A-Za-z]*" placeholder="First name*" required>
                         </div>             
                         <div class="form-row">
                             <label for="lastname">LAST NAME</label>
-                            <input type="text" name="lastname" id="lastname" placeholder="Last name*" required>
+                            <input type="text" name="lastname" id="lastname" pattern="[A-Za-z]*" placeholder="Last name*" required>
                         </div>
                     </div>
   
@@ -63,11 +63,12 @@
                     <div class="wrapper">
                         <div class="form-row">
                             <label for="password">PASSWORD</label>
-                            <input type="password" name="password" id="password" minlength="5" maxlength="20" placeholder="5-20 Characters*" required>
+                            <input type="password" name="password" id="password" minlength="5" maxlength="20" placeholder="5-20 characters*" required>
+                            <p class="error-message">*Passwords do not match</p>
                         </div>  
                         <div class="form-row">
                             <label for="confirmpassword">CONFIRM PASSWORD</label>
-                            <input type="password" name="confirmpassword" id="confirmpassword" minlength="5" maxlength="20" placeholder="5-20 Characters*" required>
+                            <input type="password" name="confirmpassword" id="confirmpassword" minlength="5" maxlength="20" placeholder="5-20 characters*" required>
                         </div>          
                     </div>
  
@@ -75,7 +76,7 @@
             </div>
             
             <div class="account">
-                <button class="createacc">Create Account</button>
+                <button type="submit" id="createAccount" class="createacc">Create Account</button>
                 <p>Already have an account? <a href="#">Log in</a></p> 
             </div>
         </div>

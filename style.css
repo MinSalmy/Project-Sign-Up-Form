@@ -94,6 +94,7 @@ form {
     justify-content: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
+    
 }
 
 .form-row label {
@@ -111,14 +112,44 @@ form {
     border-radius: 6px;
     padding: 7px;
 }
-/*
-.form-row input:invalid {
-    border-color: var(--color-invalid);
-}*/
+
+.error-message {
+    display: none;
+    color: var(--color-invalid);
+    font-size: 14px;
+}
 
 .form-row input:focus:valid  {
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border-color: var(--color-valid);
+}
+
+.form-row input.invalid:focus:valid{
+    border-color: var(--color-invalid);
+}
+
+.form-row input.invalid:focus:valid ~ .error-message {
+    border-color: var(--color-invalid);
+    display: block;
+}
+
+  /* Only show valid ring while not focused and if a value is entered */
+  /* :empty won't work here as that targets elements that have no childeren. Therefore we abuse :placeholder-shown */
+input:not(:focus):not(:placeholder-shown):valid {
+    border-color: var(--color-valid);
+}
+input.invalid:not(:focus):not(:placeholder-shown):valid,
+input.invalid:not(:focus):valid{
+    border-color: var(--color-invalid);
+}
+
+input.invalid:not(:focus):not(:placeholder-shown):valid ~ .error-message {
+    border-color: var(--color-invalid);
+    display: block; 
+}
+
+input:not(:focus):not(:placeholder-shown):invalid ~ .error-message {
+    display: block; 
 }
 
 .form-row input:focus:invalid  {
@@ -130,14 +161,14 @@ form {
 input:not(:focus):not(:placeholder-shown):invalid {
     border-color: var(--color-invalid);
 }
+
 input:not(:focus):not(:placeholder-shown):invalid ~ .error-message {
     display: block; 
 }
-  
-  /* Only show valid ring while not focused and if a value is entered */
-  /* :empty won't work here as that targets elements that have no childeren. Therefore we abuse :placeholder-shown */
-input:not(:focus):not(:placeholder-shown):valid {
-    border-color: var(--color-valid);
+
+input.invalid:not(:focus):not(:placeholder-shown) ~ .error-message {
+    display: block; 
+    border-color: var(--color-invalid);
 }
 
 input:focus {
@@ -166,7 +197,7 @@ input:focus {
     color: white;
     background-color: var(--main-color);
     border-radius: 10px;
-    border: none;
+    border: 1px solid var(--main-color);
     padding: 8px 36px;
     width: fit-content;
     font-family: 'Cone of silence', 'Anir', sans-serif;
@@ -174,4 +205,12 @@ input:focus {
     font-weight: 700;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
+    transition: all 0.4s ease;
+}
+
+.createacc:hover {
+    color: var(--main-color);
+    background-color: white;
+    border: 1px solid var(--main-color);
+    
 }
